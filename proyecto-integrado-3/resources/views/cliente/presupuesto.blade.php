@@ -42,6 +42,8 @@
                             </p>
                         </div>
                     </div>
+
+                    <!--esta registrado -->
                     @if (session()->get('tipo')=='cliente')
                     <div class="col-12 ">
                         <div class="border border-dark rounded-3 m-4">
@@ -85,15 +87,19 @@
                         </div>
                     </div>
                     @endif
+
+                    <!--No esta registrado tendra que iniciar sesion u registrarse -->
                     @if (session()->get('tipo')!='cliente' && session()->get('tipo')!='empleado')
+                    
+                    <!--Login -->
                     <div class="col-4">
                         <div class="border border-dark rounded-3 m-4">
                             <div class="text-center container bg-secondary p-2 text-dark bg-opacity-50">
                                 <h5 class="h5 mb-3 fw-normal text-white">¿Tienes ya una cuenta?</h5>
                                 <h5 class="h5 mb-3 fw-normal text-white">Iniciar sesión</h5>
-                                @if(\Session::has('error'))
+                                <!-- @if(\Session::has('error'))
                                 <div class="alert alert-danger">{{ \Session::get('error') }}</div>
-                                @endif
+                                @endif -->
                                 <form method="post" action="/cliente/login">
                                     @csrf
                                     <div class="form-floating">
@@ -110,14 +116,16 @@
                             </main>
                         </div>
                     </div>
+
+                    <!--registro -->
                     <div class="col-8">
                         <div class="border border-dark rounded-3 m-4">
                             <div class="text-center container bg-secondary p-2 text-dark bg-opacity-50">
                                 <h5 class="h5 mb-3 fw-normal text-white">¿Todavía sin una cuenta?</h5>
                                 <h5 class="h5 mb-3 fw-normal text-white">Registrate ya</h5>
-                                @if(\Session::has('error'))
+                                <!-- @if(\Session::has('error'))
                                 <div class="alert alert-danger">{{ \Session::get('error') }}</div>
-                                @endif
+                                @endif -->
                                 <form method="post" action="/cliente/register">
                                     @csrf
                                     @method('PUT')
